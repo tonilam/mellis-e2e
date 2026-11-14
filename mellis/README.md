@@ -2,6 +2,10 @@
 
 Installable local E2E runner (Go + Wails). The UI runs in a system webview window; opening the app does not open a browser for the run.
 
+## License
+
+This project is licensed under the [GNU General Public License v3.0](../LICENSE).
+
 ## Prerequisites
 
 - Go 1.23+
