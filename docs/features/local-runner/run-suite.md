@@ -38,6 +38,7 @@
 - The runner executes that command in the project path, with the login-shell environment loaded at open.
 - The runner does not start the project's application as part of this action.
 - While the command is running, each test the output reports moves from waiting, to running, to passed or failed.
+- Until a project reporter is mapped, the interim report language is `mellis:test <waiting|running|passed|failed> <name>[ duration=…][ story=…][ failure=…]` lines on stdout/stderr; unmatched lines are ignored and do not invent tests.
 - The window shows how many tests are finished, how many are running, and how many are still waiting.
 - The developer can stop the run. Results already reported stay in the window.
 - When the command exits, the run is finished.
@@ -55,11 +56,14 @@
 
 - From a result, the developer can ask an agent CLI already installed on the machine to do one of three things: create a test, fix this test, or fix the application code this test is about.
 - Claude Code CLI and the Cursor CLI are examples. The developer chooses which installed CLI to call before the request is sent.
+- First shippable detection is interim: LookPath on the loaded PATH for `claude` and `cursor-agent`, invoked with `-p <prompt>`, shown as those product labels when present. Exact binary names and flags are not a product lock; revise when a real install differs.
 - The request carries the test name, the pass or fail, the failure text when there is one, and the user story when the test has one.
 - The window shows that the agent is working, and the developer can stop that request on its own.
 - The agent proposes a change. The developer accepts it or discards it before anything remains in the project.
+- After the agent request finishes, the project matches the tree from before the request until the developer accepts; accept leaves the proposed change; discard leaves that pre-request tree.
 - A discarded change leaves the project as it was.
 - After an accepted change, the developer can run that test again from the window. The new result is shown beside the previous result for that test.
+- First shippable: “Run this test again” runs the same suite command; the window shows previous and new for that named test (a single-test filter is not required for this outcome).
 - When the chosen CLI cannot be started, the project list, the run, and the results still work. The agent actions say that the CLI is unavailable.
 
 ## Edge cases

@@ -13,3 +13,4 @@ Agent guidance for this repository.
 | New capability, before requirements | [teams/discovery/TEAM.md](teams/discovery/TEAM.md) |
 | Feature docs and user stories | [roles/product.md](roles/product.md) |
 | Start development from a ticket | [workflows/ticket-start/SKILL.md](workflows/ticket-start/SKILL.md) |
+| Batch pending tickets | [workflows/ticket-batch/SKILL.md](workflows/ticket-batch/SKILL.md) |

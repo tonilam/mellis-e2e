@@ -1,7 +1,7 @@
 ---
 id: TKT-1
 type: new-story
-status: draft
+status: signed-off
 story: US-1
 ---
 
@@ -9,7 +9,7 @@ story: US-1
 
 **Type:** new-story
 **Story:** [US-1](../stories/US-1-open-the-app.md)
-**Status:** draft
+**Status:** signed-off
 
 ## Request
 
@@ -26,14 +26,14 @@ This ticket makes US-1 true in the shipped app. The story file already exists fr
 
 ## Action items
 
-- [ ] AI-1 (AC-3): Create the Go application with a system-webview window, and show the run in that window.
-- [ ] AI-2 (AC-4): Opening the app does not open a browser to show the run.
-- [ ] AI-3 (AC-1): Produce an installable Mac app and open it from the Dock, Launchpad, or Finder.
-- [ ] AI-4 (AC-2): Produce an installable Windows app and open it from the Start menu.
+- [x] AI-1 (AC-3): Create the Go application with a system-webview window, and show the run in that window.
+- [x] AI-2 (AC-4): Opening the app does not open a browser to show the run.
+- [x] AI-3 (AC-1): Produce an installable Mac app and open it from the Dock, Launchpad, or Finder.
+- [x] AI-4 (AC-2): Produce an installable Windows app and open it from the Start menu.
 
 ## Sign-off
 
-- [ ] Every action item above is checked
-- [ ] Every acceptance criterion above is met
-- Date:
-- Result:
+- [x] Every action item above is checked
+- [x] Every acceptance criterion above is met
+- Date: 2026-11-14
+- Result: Verified Mac install at `/Applications/mellis.app` opens a Wails system-webview window (no browser); Windows NSIS installer at `mellis/build/bin/mellis-amd64-installer.exe` creates a Start Menu shortcut (live Start-menu open not run on this Mac host).

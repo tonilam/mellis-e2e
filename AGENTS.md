@@ -9,5 +9,6 @@
 | New-capability discovery (pre-requirements, no code) | [.agents/teams/discovery/TEAM.md](.agents/teams/discovery/TEAM.md) |
 | Feature docs in `docs/features/` | [.agents/roles/product.md](.agents/roles/product.md) |
 | Start development from a ticket in `.docs/tickets/` | [.agents/workflows/ticket-start/SKILL.md](.agents/workflows/ticket-start/SKILL.md) |
+| Batch pending tickets (orchestrate sessions, changelogs, sign-off) | [.agents/workflows/ticket-batch/SKILL.md](.agents/workflows/ticket-batch/SKILL.md) |
 
 The analyst facilitates discovery. Each discovery member is its own subagent. Do not play a member in the main session.

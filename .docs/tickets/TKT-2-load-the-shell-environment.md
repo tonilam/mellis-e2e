@@ -1,7 +1,7 @@
 ---
 id: TKT-2
 type: new-story
-status: draft
+status: signed-off
 story: US-2
 ---
 
@@ -9,7 +9,7 @@ story: US-2
 
 **Type:** new-story
 **Story:** [US-2](../stories/US-2-load-the-shell-environment.md)
-**Status:** draft
+**Status:** signed-off
 
 ## Request
 
@@ -30,18 +30,18 @@ This ticket makes US-2 true in the app from TKT-1. The story file already exists
 
 ## Action items
 
-- [ ] AI-1 (AC-1): On open, load the developer's login-shell environment, including the PATH a new terminal would have.
-- [ ] AI-2 (AC-2): Start a suite command with that loaded environment.
-- [ ] AI-3 (AC-3): Start an agent CLI with that loaded environment.
-- [ ] AI-4 (AC-4): Add a view that shows the environment the runner loaded.
-- [ ] AI-5 (AC-5): From that view, the developer can retry the load.
-- [ ] AI-6 (AC-6): When the load fails, the window says the environment could not be loaded.
-- [ ] AI-7 (AC-7): When the load has failed, starting a suite and starting an agent request do nothing.
-- [ ] AI-8 (AC-8): After a failed load, a successful retry makes the suite and agent actions available again.
+- [x] AI-1 (AC-1): On open, load the developer's login-shell environment, including the PATH a new terminal would have.
+- [x] AI-2 (AC-2): Start a suite command with that loaded environment.
+- [x] AI-3 (AC-3): Start an agent CLI with that loaded environment.
+- [x] AI-4 (AC-4): Add a view that shows the environment the runner loaded.
+- [x] AI-5 (AC-5): From that view, the developer can retry the load.
+- [x] AI-6 (AC-6): When the load fails, the window says the environment could not be loaded.
+- [x] AI-7 (AC-7): When the load has failed, starting a suite and starting an agent request do nothing.
+- [x] AI-8 (AC-8): After a failed load, a successful retry makes the suite and agent actions available again.
 
 ## Sign-off
 
-- [ ] Every action item above is checked
-- [ ] Every acceptance criterion above is met
-- Date:
-- Result:
+- [x] Every action item above is checked
+- [x] Every acceptance criterion above is met
+- Date: 2026-11-14
+- Result: Verified `go test ./...` (PATH matches new terminal; suite/agent use loaded env; blocked on failure; retry restores). UI has env view + retry; Mac app reinstalled.

@@ -1,0 +1,501 @@
+.shell {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 2.5rem 2rem 3rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  color: #5a6270;
+  font-size: 1rem;
+}
+
+.status-panel,
+.project-panel,
+.run-panel,
+.agent-panel {
+  padding: 1.25rem 0 0;
+  border-top: 1px solid #d8dde6;
+}
+
+.status-panel {
+  margin-bottom: 0.5rem;
+}
+
+.status-panel h2,
+.project-panel h2,
+.run-panel h2,
+.agent-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 0.85rem;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  color: #3a4150;
+}
+
+.field-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c5ccd8;
+  background: #fff;
+  color: #1a1d23;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.field-input:focus {
+  outline: 2px solid #8b95a8;
+  outline-offset: 1px;
+}
+
+.session-path,
+.command-preview {
+  margin: 0 0 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: #e8eef7;
+  color: #1e3a5f;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.run-copy {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+  color: #3a4150;
+}
+
+.env-status,
+.run-status,
+.action-result,
+.agent-status {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: #e8eef7;
+  color: #1e3a5f;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.env-status.is-ok {
+  background: #e6f4ea;
+  color: #1e4620;
+}
+
+.env-status.is-error,
+.action-result.is-blocked,
+.action-result.is-failed,
+.agent-status.is-blocked,
+.agent-status.is-failed {
+  background: #fce8e6;
+  color: #8a1c12;
+}
+
+.action-result.is-ok,
+.agent-status.is-ok {
+  background: #e6f4ea;
+  color: #1e4620;
+}
+
+.agent-status.is-working {
+  background: #e8eef7;
+  color: #1e3a5f;
+}
+
+.agent-status {
+  margin-top: 0.85rem;
+}
+
+.proposal-panel {
+  margin-top: 0.85rem;
+  padding: 0.75rem 1rem;
+  background: #f4f6fa;
+  border: 1px solid #d5dbe6;
+}
+
+.proposal-heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.proposal-list {
+  margin: 0 0 0.75rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.proposal-item.is-added {
+  color: #1e4620;
+}
+
+.proposal-item.is-removed {
+  color: #8a1c12;
+}
+
+.proposal-item.is-modified {
+  color: #1e3a5f;
+}
+
+.test-row-previous,
+.test-row-current {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #3a4150;
+}
+
+.test-row-previous {
+  color: #5a6475;
+}
+
+.env-actions,
+.run-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.action-result {
+  margin-top: 0.85rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid #c5ccd8;
+  background: #fff;
+  color: #1a1d23;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: #8b95a8;
+  background: #f7f8fa;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-quiet {
+  border-color: transparent;
+  background: transparent;
+}
+
+.env-dialog {
+  border: 1px solid #c5ccd8;
+  padding: 0;
+  max-width: min(40rem, 92vw);
+  width: 40rem;
+  background: #f5f6f8;
+  color: #1a1d23;
+}
+
+.env-dialog::backdrop {
+  background: rgba(26, 29, 35, 0.35);
+}
+
+.env-dialog-inner {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: min(80vh, 36rem);
+}
+
+.env-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #d8dde6;
+}
+
+.env-dialog-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.env-dialog-meta {
+  margin: 0;
+  padding: 0.65rem 1rem 0;
+  color: #5a6270;
+  font-size: 0.85rem;
+}
+
+.env-list {
+  margin: 0.65rem 1rem 0;
+  padding: 0.75rem;
+  overflow: auto;
+  flex: 1;
+  background: #fff;
+  border: 1px solid #d8dde6;
+  font-family: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.env-dialog-footer {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid #d8dde6;
+  margin-top: 0.85rem;
+}
+
+.progress-panel {
+  margin-top: 1rem;
+}
+
+.progress-counts {
+  margin: 0 0 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: #e8eef7;
+  color: #1e3a5f;
+  font-size: 0.9rem;
+}
+
+.test-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #d8dde6;
+  background: #fff;
+}
+
+.test-row {
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid #e8ebf0;
+  font-size: 0.9rem;
+  color: #1a1d23;
+  cursor: pointer;
+}
+
+.test-row:last-child {
+  border-bottom: none;
+}
+
+.test-row:hover,
+.test-row:focus {
+  background: #f4f7fb;
+  outline: none;
+}
+
+.test-row-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+}
+
+.test-row-name {
+  flex: 1 1 auto;
+  min-width: 8rem;
+}
+
+.test-row-status {
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.test-row-duration {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  color: #5a6270;
+}
+
+.test-row-story {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #3a4556;
+}
+
+.test-row-failure {
+  margin: 0.4rem 0 0;
+  padding: 0.45rem 0.55rem;
+  background: #fdf2f0;
+  border: 1px solid #f0d0cb;
+  font-family: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #8a1c12;
+}
+
+.test-row.is-waiting {
+  color: #5a6270;
+}
+
+.test-row.is-running {
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+.test-row.is-passed .test-row-status {
+  color: #1e4620;
+}
+
+.test-row.is-failed .test-row-status {
+  color: #8a1c12;
+}
+
+.result-dialog {
+  border: 1px solid #d8dde6;
+  border-radius: 0;
+  padding: 0;
+  max-width: min(36rem, calc(100vw - 2rem));
+  width: 100%;
+}
+
+.result-dialog::backdrop {
+  background: rgba(26, 29, 35, 0.35);
+}
+
+.result-dialog-inner {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: min(80vh, 32rem);
+}
+
+.result-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #d8dde6;
+}
+
+.result-dialog-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.result-dialog-status {
+  margin: 0.85rem 1rem 0;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.result-dialog-status.is-passed {
+  color: #1e4620;
+}
+
+.result-dialog-status.is-failed {
+  color: #8a1c12;
+}
+
+.result-dialog-meta {
+  margin: 0.35rem 1rem 0;
+  font-size: 0.9rem;
+  color: #5a6270;
+}
+
+.result-dialog-section {
+  margin: 0.85rem 1rem;
+}
+
+.result-dialog-section h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3a4556;
+}
+
+.result-dialog-section p,
+.result-dialog-section pre {
+  margin: 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.result-dialog-section pre {
+  padding: 0.45rem 0.55rem;
+  background: #fdf2f0;
+  border: 1px solid #f0d0cb;
+  font-family: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: #8a1c12;
+}
+
+.agent-ask-section {
+  border-top: 1px solid #e8ebf0;
+  padding-top: 0.85rem;
+}
+
+.agent-ask-copy {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: #5a6270;
+}
+
+.agent-cli-fieldset {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  border: none;
+}
+
+.agent-cli-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.agent-cli-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: #1a1d23;
+}
+
+.agent-ask-note {
+  margin: 0 0 0.65rem;
+  padding: 0.55rem 0.65rem;
+  background: #fce8e6;
+  color: #8a1c12;
+  font-size: 0.85rem;
+}
+
+.agent-ask-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

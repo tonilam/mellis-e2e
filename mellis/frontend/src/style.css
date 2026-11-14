@@ -1,0 +1,14 @@
+html {
+  background-color: #f5f6f8;
+  color: #1a1d23;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: #1a1d23;
+}
+
+#app {
+  min-height: 100vh;
+}

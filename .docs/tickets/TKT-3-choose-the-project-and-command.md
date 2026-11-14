@@ -1,7 +1,7 @@
 ---
 id: TKT-3
 type: new-story
-status: draft
+status: signed-off
 story: US-3
 ---
 
@@ -9,7 +9,7 @@ story: US-3
 
 **Type:** new-story
 **Story:** [US-3](../stories/US-3-choose-the-project-and-command.md)
-**Status:** draft
+**Status:** signed-off
 
 ## Request
 
@@ -31,19 +31,19 @@ This ticket makes US-3 true. The story file already exists. Do not add a second 
 
 ## Action items
 
-- [ ] AI-1 (AC-1): The developer can enter a project path.
-- [ ] AI-2 (AC-2): The window keeps that path visible until the session ends.
-- [ ] AI-3 (AC-3): The developer can enter the command that starts the E2E suite.
-- [ ] AI-4 (AC-4): The window shows that command before a run starts.
-- [ ] AI-5 (AC-5): The developer can change the command before the run starts.
-- [ ] AI-6 (AC-6): Save the path and command on this machine, and offer that same pair in the next session for the developer to confirm or change.
-- [ ] AI-7 (AC-7): When the path does not exist, the window says so and the runner does not start a command.
-- [ ] AI-8 (AC-8): When the command cannot be started, the window says so and the runner shows no invented test results.
-- [ ] AI-9 (AC-9): When the command is missing from the loaded environment, the window names that command and the runner shows no invented test results.
+- [x] AI-1 (AC-1): The developer can enter a project path.
+- [x] AI-2 (AC-2): The window keeps that path visible until the session ends.
+- [x] AI-3 (AC-3): The developer can enter the command that starts the E2E suite.
+- [x] AI-4 (AC-4): The window shows that command before a run starts.
+- [x] AI-5 (AC-5): The developer can change the command before the run starts.
+- [x] AI-6 (AC-6): Save the path and command on this machine, and offer that same pair in the next session for the developer to confirm or change.
+- [x] AI-7 (AC-7): When the path does not exist, the window says so and the runner does not start a command.
+- [x] AI-8 (AC-8): When the command cannot be started, the window says so and the runner shows no invented test results.
+- [x] AI-9 (AC-9): When the command is missing from the loaded environment, the window names that command and the runner shows no invented test results.
 
 ## Sign-off
 
-- [ ] Every action item above is checked
-- [ ] Every acceptance criterion above is met
-- Date:
-- Result:
+- [x] Every action item above is checked
+- [x] Every acceptance criterion above is met
+- Date: 2026-11-14
+- Result: Verified path/command UI, persistence across load, and StartSuite gates for missing path, missing PATH command, and start failure (`go test ./...`).
