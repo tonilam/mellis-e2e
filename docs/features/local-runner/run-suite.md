@@ -43,6 +43,7 @@
 - The window shows how many tests are finished, how many are running, and how many are still waiting.
 - The developer can stop the run. Results already reported stay in the window.
 - When the command exits, the run is finished.
+- When the run session shows a line longer than the window width, that line wraps so the full line stays within the window's max width without horizontal overflow.
 
 ## Results
 

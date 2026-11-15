@@ -18,3 +18,4 @@ These eight tickets are the first shippable runner, in build order. Each one del
 | [TKT-8](TKT-8-accept-or-discard.md) | new-story | [US-8](../stories/US-8-accept-or-discard.md) | signed-off | Accept or discard the change |
 | [TKT-9](TKT-9-laravel-login-fixture.md) | new-story | [US-9](../stories/US-9-laravel-login-fixture.md) | signed-off | Laravel login fixture |
 | [TKT-10](TKT-10-open-settings-from-the-menu.md) | new-story | [US-10](../stories/US-10-open-settings-from-the-menu.md) | signed-off | Open Settings from the main app menu |
+| [TKT-11](TKT-11-wrap-run-session-output.md) | update-story | [US-5](../stories/US-5-watch-the-run.md) | signed-off | Wrap run session output |
