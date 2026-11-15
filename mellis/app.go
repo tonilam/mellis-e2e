@@ -20,7 +20,7 @@ import (
 	"mellis/internal/suiteparse"
 	"mellis/internal/suiterun"
 
-	wailsRuntime "github.com/wailsapp/wails/v2/pkg/runtime"
+	"github.com/wailsapp/wails/v3/pkg/application"
 )
 
 const (
@@ -36,7 +36,7 @@ type SettingsPath = runsettings.PathFunc
 
 // App is the Wails application backend.
 type App struct {
-	ctx          context.Context
+	app          *application.App
 	loader       Loader
 	settingsPath SettingsPath
 
@@ -149,17 +149,26 @@ func NewApp() *App {
 	}
 }
 
-func (a *App) startup(ctx context.Context) {
-	a.ctx = ctx
+func (a *App) setApplication(app *application.App) {
+	a.app = app
+}
+
+// ServiceName is the Wails V3 service id used for generated bindings.
+func (a *App) ServiceName() string {
+	return "App"
+}
+
+// ServiceStartup loads persisted settings and the login-shell environment.
+func (a *App) ServiceStartup(ctx context.Context, options application.ServiceOptions) error {
 	a.loadPersistedSettings()
 	a.loadEnvironment()
+	return nil
 }
 
 // beforeClose stops any running suite or agent when the developer closes the window.
-func (a *App) beforeClose(ctx context.Context) (prevent bool) {
+func (a *App) beforeClose() {
 	a.StopSuite()
 	a.StopAgent()
-	return false
 }
 
 func (a *App) loadPersistedSettings() {
@@ -926,10 +935,10 @@ func (a *App) rerunTest(testName string) ActionResult {
 }
 
 func (a *App) publishAgentStateLocked() {
-	if a.ctx == nil {
+	if a.app == nil {
 		return
 	}
-	wailsRuntime.EventsEmit(a.ctx, agentStateEvent, a.agentState)
+	a.app.Event.Emit(agentStateEvent, a.agentState)
 }
 
 func (a *App) attachPreviousResults(tests []suiteparse.Test) []suiteparse.Test {
@@ -1193,11 +1202,11 @@ func (a *App) watchSuite(ctx context.Context, cmd *exec.Cmd, pr *io.PipeReader, 
 }
 
 func (a *App) publishSuiteStateLocked() {
-	if a.ctx == nil {
+	if a.app == nil {
 		return
 	}
 	st := a.copySuiteStateLocked()
-	wailsRuntime.EventsEmit(a.ctx, suiteStateEvent, st)
+	a.app.Event.Emit(suiteStateEvent, st)
 }
 
 func (a *App) copySuiteStateLocked() SuiteState {

@@ -16,6 +16,7 @@ Behaviour summary: [docs/features/local-runner/run-suite.md](../../docs/features
 | [US-8](US-8-accept-or-discard.md) | Accept or discard the change, then rerun that test |
 | [US-9](US-9-laravel-login-fixture.md) | Run a Laravel login fixture for E2E |
 | [US-10](US-10-open-settings-from-the-menu.md) | Open Settings from the main app menu |
+| [US-11](US-11-build-on-wails-v3.md) | Build and package Mellis on Wails V3 |
 
 ## Out of scope
 

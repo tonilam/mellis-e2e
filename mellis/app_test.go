@@ -465,10 +465,7 @@ func TestBeforeCloseStopsSuite(t *testing.T) {
 		t.Fatal("suite not running")
 	}
 
-	prevent := app.beforeClose(nil)
-	if prevent {
-		t.Fatal("beforeClose should allow window close")
-	}
+	app.beforeClose()
 	final := waitForSuite(t, app)
 	if !final.Finished || final.Running {
 		t.Fatalf("final=%+v", final)

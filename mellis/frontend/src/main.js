@@ -1,7 +1,8 @@
 import './style.css';
 import './app.css';
-import {WindowKind} from '../wailsjs/go/main/App';
+import {Events} from '@wailsio/runtime';
 import {
+  WindowKind,
   GetEnvironmentStatus,
   RetryLoadEnvironment,
   GetRunSettings,
@@ -16,8 +17,7 @@ import {
   AcceptProposal,
   DiscardProposal,
   RerunTest,
-} from '../wailsjs/go/main/App';
-import {EventsOn} from '../wailsjs/runtime/runtime';
+} from '../bindings/mellis/app.js';
 
 document.querySelector('#app').innerHTML = `
   <main class="shell">
@@ -957,12 +957,13 @@ for (const btn of agentAskActions) {
   });
 }
 
-EventsOn('suite:state', (st) => {
+Events.On('suite:state', (ev) => {
+  const st = ev?.data ?? ev;
   renderSuiteState(st);
 });
 
-EventsOn('agent:state', (st) => {
-  renderAgentState(st);
+Events.On('agent:state', (ev) => {
+  renderAgentState(ev?.data ?? ev);
 });
 
 WindowKind()

@@ -2,49 +2,50 @@ package main
 
 import (
 	"embed"
+	"log"
 
-	"github.com/wailsapp/wails/v2"
-	"github.com/wailsapp/wails/v2/pkg/options"
-	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
-	"github.com/wailsapp/wails/v2/pkg/options/mac"
+	"github.com/wailsapp/wails/v3/pkg/application"
+	"github.com/wailsapp/wails/v3/pkg/events"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
 
-func main() {
-	app := NewApp()
+func init() {
+	application.RegisterEvent[SuiteState](suiteStateEvent)
+	application.RegisterEvent[AgentState](agentStateEvent)
+}
 
-	err := wails.Run(&options.App{
+func main() {
+	svc := NewApp()
+
+	app := application.New(application.Options{
+		Name:        "Mellis",
+		Description: "Local E2E runner",
+		Services: []application.Service{
+			application.NewService(svc),
+		},
+		Assets: application.AssetOptions{
+			Handler: application.AssetFileServerFS(assets),
+		},
+		Mac: application.MacOptions{
+			ApplicationShouldTerminateAfterLastWindowClosed: true,
+		},
+	})
+	svc.setApplication(app)
+
+	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Title:  "Mellis",
 		Width:  1024,
 		Height: 768,
-		AssetServer: &assetserver.Options{
-			Assets: assets,
-		},
-		BackgroundColour: &options.RGBA{R: 245, G: 246, B: 248, A: 1},
-		OnStartup:        app.startup,
-		OnBeforeClose:    app.beforeClose,
-		Bind: []interface{}{
-			app,
-		},
-		Mac: &mac.Options{
-			TitleBar: &mac.TitleBar{
-				TitlebarAppearsTransparent: false,
-				HideTitle:                  false,
-				HideTitleBar:               false,
-				FullSizeContent:            false,
-				UseToolbar:                 false,
-				HideToolbarSeparator:       true,
-			},
-			About: &mac.AboutInfo{
-				Title:   "Mellis",
-				Message: "Local E2E runner",
-			},
-		},
+		BackgroundColour: application.NewRGB(245, 246, 248),
+		URL:              "/",
+	})
+	window.RegisterHook(events.Common.WindowClosing, func(e *application.WindowEvent) {
+		svc.beforeClose()
 	})
 
-	if err != nil {
-		println("Error:", err.Error())
+	if err := app.Run(); err != nil {
+		log.Fatal(err)
 	}
 }

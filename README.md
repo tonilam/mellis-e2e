@@ -1,22 +1,22 @@
 # Mellis
 
-Installable local E2E runner for macOS and Windows. Built with [Go](https://go.dev/) and [Wails](https://wails.io/); the UI runs in a system webview window (no browser tab for the run).
+Installable local E2E runner for macOS and Windows. Built with [Go](https://go.dev/) and [Wails](https://v3.wails.io/) V3; the UI runs in a system webview window (no browser tab for the run).
 
 Application source lives in [`mellis/`](mellis/).
 
 ## Prerequisites
 
-- Go 1.23+
-- [Wails CLI](https://wails.io/docs/gettingstarted/installation) v2
+- Go 1.26+
+- [Wails CLI](https://v3.wails.io/getting-started/installation/) v3 (`wails3`)
 - Node.js / npm (frontend build)
 - macOS: Xcode command line tools
-- Windows installer (optional): [NSIS](https://wails.io/docs/guides/windows-installer/) / `makensis`
+- Windows installer (optional): [NSIS](https://v3.wails.io/guides/windows-installer/) / `makensis`
 
 ## Development
 
 ```bash
 cd mellis
-wails dev
+wails3 dev
 ```
 
 ## Build
@@ -25,15 +25,16 @@ wails dev
 
 ```bash
 cd mellis
-wails build
+wails3 build
+wails3 package
 ```
 
-Output: `mellis/build/bin/mellis.app`
+Output: `mellis/bin/mellis.app`
 
 Install and open:
 
 ```bash
-cp -R build/bin/mellis.app /Applications/
+cp -R bin/mellis.app /Applications/
 open /Applications/mellis.app
 ```
 
@@ -43,18 +44,20 @@ Cross-compile from macOS (or build natively on Windows):
 
 ```bash
 cd mellis
-wails build -platform windows/amd64
+wails3 build GOOS=windows
 ```
 
-Output: `mellis/build/bin/mellis.exe`
+Output: `mellis/bin/mellis.exe`
 
 Start-menu installer (requires NSIS on the build machine):
 
 ```bash
-wails build -platform windows/amd64 -nsis
+cd mellis
+wails3 build GOOS=windows GOARCH=amd64
+wails3 package GOOS=windows GOARCH=amd64
 ```
 
-Outputs: `mellis/build/bin/mellis.exe` and `mellis/build/bin/mellis-amd64-installer.exe`.
+Outputs: `mellis/bin/mellis.exe` and `mellis/bin/mellis-amd64-installer.exe`.
 
 ## License
 

@@ -55,7 +55,7 @@ New subagent (`generalPurpose`), background OK. Prompt must include:
 
 - Repo root, ticket path, story path, feature doc, latest changelog paths
 - Prior signed-off tickets and where the app lives (paths only)
-- Environment tips learned here (e.g. `export PATH="$HOME/go/bin:$PATH"` for `wails`; `CGO_LDFLAGS="-framework UniformTypeIdentifiers"` on this Mac SDK if build fails on UTType)
+- Environment tips learned here (e.g. `export PATH="$HOME/go/bin:$PATH"` for `wails3`)
 - Stay inside this ticket only
 - Check each `AI-*` when finished; leave Sign-off unchecked
 - On product ambiguity: stop with `CLARIFICATION_NEEDED` (question, known facts, options) — do not invent product decisions
@@ -110,7 +110,7 @@ Status is ready (Phase 3 pre-approved for this batch). Do not wait for the user.
 Set in-progress when AI-1 starts; update tickets README.
 Check AI-* when done. Do NOT sign off / do NOT set signed-off.
 Stay in this ticket. CLARIFICATION_NEEDED on product ambiguity.
-PATH tip: export PATH="$HOME/go/bin:$PATH" before wails build.
+PATH tip: export PATH="$HOME/go/bin:$PATH" before `wails3 build` / `wails3 package`.
 Deliver SESSION_REPORT. No docs/changelogs. No commits.
 Start Phase 4 now.
 ```

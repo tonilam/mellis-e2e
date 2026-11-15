@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Mellis
+Comment=Local E2E runner
+# The Exec line includes %u to pass the URL to the application
+Exec=/usr/local/bin/mellis %u
+Terminal=false
+Type=Application
+Icon=mellis
+Categories=Utility;
+StartupWMClass=mellis
+
+ 
