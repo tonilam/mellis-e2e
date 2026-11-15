@@ -22,77 +22,105 @@ import {EventsOn} from '../wailsjs/runtime/runtime';
 document.querySelector('#app').innerHTML = `
   <main class="shell">
     <header class="header">
-      <h1 class="brand">Mellis</h1>
-      <p class="tagline">Local E2E runner</p>
-    </header>
-
-    <section class="status-panel" aria-labelledby="env-heading">
-      <h2 id="env-heading">Environment</h2>
-      <p class="env-status" id="env-status" role="status">Loading environment…</p>
-      <div class="env-actions">
-        <button type="button" class="btn" id="btn-view-env">View environment</button>
-        <button type="button" class="btn" id="btn-retry-env">Retry load</button>
-      </div>
-    </section>
-
-    <section class="project-panel" aria-labelledby="project-heading">
-      <h2 id="project-heading">Project and command</h2>
-      <p class="run-copy">
-        Point Mellis at the project and confirm the command that starts its E2E suite.
-        Values from the last session are offered here for you to confirm or change.
-      </p>
-      <label class="field" for="project-path">
-        <span class="field-label">Project path</span>
-        <input type="text" id="project-path" class="field-input" spellcheck="false" autocomplete="off" placeholder="/path/to/project" />
-      </label>
-      <p class="session-path" id="session-path" role="status" hidden></p>
-      <label class="field" for="suite-command">
-        <span class="field-label">Suite command</span>
-        <input type="text" id="suite-command" class="field-input" spellcheck="false" autocomplete="off" placeholder="npm run e2e" />
-      </label>
-      <p class="command-preview" id="command-preview" role="status">Command before run: (none yet)</p>
-    </section>
-
-    <section class="run-panel" aria-labelledby="run-heading">
-      <h2 id="run-heading">Run</h2>
-      <p class="run-copy">
-        Start the suite from this window. Mellis runs the command shown above in the
-        project path, with the environment loaded on open. It does not start, stop,
-        or restart your project's application — keep that running yourself.
-      </p>
-      <p class="run-status" id="window-kind" role="status">Loading…</p>
-      <div class="run-actions">
-        <button type="button" class="btn" id="btn-start-suite" disabled>Start suite</button>
-        <button type="button" class="btn" id="btn-stop-suite" disabled>Stop run</button>
-      </div>
-      <p class="action-result" id="action-result" role="status" hidden></p>
-      <div class="progress-panel" id="progress-panel" hidden>
-        <p class="progress-counts" id="progress-counts" role="status"></p>
-        <ul class="test-list" id="test-list" aria-live="polite"></ul>
-      </div>
-    </section>
-
-    <section class="agent-panel" aria-labelledby="agent-heading">
-      <h2 id="agent-heading">Ask an agent</h2>
-      <p class="run-copy">
-        From a result, ask an installed agent CLI to create a test, fix this test,
-        or fix the application code this test is about. Choose the CLI before you send.
-        Accept or discard a proposed change before it remains in the project.
-      </p>
-      <p class="agent-status" id="agent-status" role="status">Open a test result to ask an agent.</p>
-      <div class="proposal-panel" id="proposal-panel" hidden>
-        <h3 class="proposal-heading">Proposed change</h3>
-        <ul class="proposal-list" id="proposal-list"></ul>
-        <div class="run-actions">
-          <button type="button" class="btn" id="btn-accept-proposal" disabled>Accept</button>
-          <button type="button" class="btn" id="btn-discard-proposal" disabled>Discard</button>
-          <button type="button" class="btn" id="btn-rerun-test" disabled>Run this test again</button>
+      <div class="header-row">
+        <div class="header-brand">
+          <h1 class="brand">Mellis</h1>
+          <p class="tagline">Local E2E runner</p>
+        </div>
+        <div class="app-menu">
+          <button type="button" class="btn" id="btn-app-menu" aria-expanded="false" aria-controls="app-menu" aria-haspopup="true">
+            Menu
+          </button>
+          <nav class="app-menu-panel" id="app-menu" hidden aria-label="Main app menu">
+            <button type="button" class="app-menu-item" data-nav="run" id="menu-run">Run</button>
+            <button type="button" class="app-menu-item" data-nav="settings" id="menu-settings">Settings</button>
+          </nav>
         </div>
       </div>
-      <div class="run-actions">
-        <button type="button" class="btn" id="btn-stop-agent" disabled>Stop agent</button>
-      </div>
-    </section>
+    </header>
+
+    <div class="page" id="page-run">
+      <section class="run-panel" aria-labelledby="run-heading">
+        <h2 id="run-heading">Run</h2>
+        <p class="run-copy">
+          Start the suite from this window. Mellis runs the suite command and project
+          path from Settings, with the environment loaded on open. It does not start,
+          stop, or restart your project's application — keep that running yourself.
+        </p>
+        <p class="run-status" id="window-kind" role="status">Loading…</p>
+        <div class="run-actions">
+          <button type="button" class="btn" id="btn-start-suite" disabled>Start suite</button>
+          <button type="button" class="btn" id="btn-stop-suite" disabled>Stop run</button>
+        </div>
+        <p class="action-result" id="action-result" role="status" hidden></p>
+        <div class="progress-panel" id="progress-panel" hidden>
+          <p class="progress-counts" id="progress-counts" role="status"></p>
+          <ul class="test-list" id="test-list" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <section class="agent-panel" aria-labelledby="agent-heading">
+        <h2 id="agent-heading">Ask an agent</h2>
+        <p class="run-copy">
+          From a result, ask an installed agent CLI to create a test, fix this test,
+          or fix the application code this test is about. Choose the CLI before you send.
+          Accept or discard a proposed change before it remains in the project.
+        </p>
+        <p class="agent-status" id="agent-status" role="status">Open a test result to ask an agent.</p>
+        <div class="proposal-panel" id="proposal-panel" hidden>
+          <h3 class="proposal-heading">Proposed change</h3>
+          <ul class="proposal-list" id="proposal-list"></ul>
+          <div class="run-actions">
+            <button type="button" class="btn" id="btn-accept-proposal" disabled>Accept</button>
+            <button type="button" class="btn" id="btn-discard-proposal" disabled>Discard</button>
+            <button type="button" class="btn" id="btn-rerun-test" disabled>Run this test again</button>
+          </div>
+        </div>
+        <div class="run-actions">
+          <button type="button" class="btn" id="btn-stop-agent" disabled>Stop agent</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="page" id="page-settings" hidden>
+      <section class="settings-panel" aria-labelledby="settings-heading">
+        <div class="page-heading-row">
+          <h2 id="settings-heading">Settings</h2>
+          <button type="button" class="btn" id="btn-back-to-run">Back to run</button>
+        </div>
+        <p class="run-copy">
+          Environment, project path, and suite command live here. The run page starts
+          the suite with these values.
+        </p>
+      </section>
+
+      <section class="status-panel" aria-labelledby="env-heading">
+        <h2 id="env-heading">Environment</h2>
+        <p class="env-status" id="env-status" role="status">Loading environment…</p>
+        <div class="env-actions">
+          <button type="button" class="btn" id="btn-view-env">View environment</button>
+          <button type="button" class="btn" id="btn-retry-env">Retry load</button>
+        </div>
+      </section>
+
+      <section class="project-panel" aria-labelledby="project-heading">
+        <h2 id="project-heading">Project and command</h2>
+        <p class="run-copy">
+          Point Mellis at the project and confirm the command that starts its E2E suite.
+          Values from the last session are offered here for you to confirm or change.
+        </p>
+        <label class="field" for="project-path">
+          <span class="field-label">Project path</span>
+          <input type="text" id="project-path" class="field-input" spellcheck="false" autocomplete="off" placeholder="/path/to/project" />
+        </label>
+        <p class="session-path" id="session-path" role="status" hidden></p>
+        <label class="field" for="suite-command">
+          <span class="field-label">Suite command</span>
+          <input type="text" id="suite-command" class="field-input" spellcheck="false" autocomplete="off" placeholder="npm run e2e" />
+        </label>
+        <p class="command-preview" id="command-preview" role="status">Command before run: (none yet)</p>
+      </section>
+    </div>
   </main>
 
   <dialog class="env-dialog" id="env-dialog" aria-labelledby="env-dialog-title">
@@ -152,6 +180,11 @@ const btnRetryInDialog = document.getElementById('btn-retry-in-dialog');
 const btnStartSuite = document.getElementById('btn-start-suite');
 const btnStopSuite = document.getElementById('btn-stop-suite');
 const btnStopAgent = document.getElementById('btn-stop-agent');
+const btnAppMenu = document.getElementById('btn-app-menu');
+const appMenu = document.getElementById('app-menu');
+const btnBackToRun = document.getElementById('btn-back-to-run');
+const pageRun = document.getElementById('page-run');
+const pageSettings = document.getElementById('page-settings');
 const envDialog = document.getElementById('env-dialog');
 const envDialogMeta = document.getElementById('env-dialog-meta');
 const envList = document.getElementById('env-list');
@@ -202,6 +235,18 @@ function statusLabel(status) {
     default:
       return status || 'waiting';
   }
+}
+
+function setMenuOpen(open) {
+  appMenu.hidden = !open;
+  btnAppMenu.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function showPage(page) {
+  const next = page === 'settings' ? 'settings' : 'run';
+  pageRun.hidden = next !== 'run';
+  pageSettings.hidden = next !== 'settings';
+  setMenuOpen(false);
 }
 
 function renderAgentCLIChoices() {
@@ -716,6 +761,35 @@ function sendAgentAsk(action) {
       updateAgentAskButtons();
     });
 }
+
+btnAppMenu.addEventListener('click', (ev) => {
+  ev.stopPropagation();
+  setMenuOpen(appMenu.hidden);
+});
+
+appMenu.addEventListener('click', (ev) => {
+  const target = ev.target.closest('[data-nav]');
+  if (!target) {
+    return;
+  }
+  showPage(target.getAttribute('data-nav'));
+});
+
+btnBackToRun.addEventListener('click', () => {
+  showPage('run');
+});
+
+document.addEventListener('click', (ev) => {
+  if (!appMenu.hidden && !ev.target.closest('.app-menu')) {
+    setMenuOpen(false);
+  }
+});
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.key === 'Escape' && !appMenu.hidden) {
+    setMenuOpen(false);
+  }
+});
 
 projectPathInput.addEventListener('input', onPathOrCommandInput);
 suiteCommandInput.addEventListener('input', onPathOrCommandInput);

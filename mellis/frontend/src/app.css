@@ -11,6 +11,17 @@
   margin-bottom: 2rem;
 }
 
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header-brand {
+  min-width: 0;
+}
+
 .brand {
   margin: 0;
   font-size: 2rem;
@@ -24,6 +35,60 @@
   font-size: 1rem;
 }
 
+.app-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.app-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 20;
+  min-width: 10rem;
+  padding: 0.35rem;
+  border: 1px solid #c5ccd8;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(26, 29, 35, 0.12);
+}
+
+.app-menu-item {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: #1a1d23;
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.app-menu-item:hover,
+.app-menu-item:focus-visible {
+  background: #eef1f6;
+  outline: none;
+}
+
+.page[hidden] {
+  display: none;
+}
+
+.page-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-heading-row h2 {
+  margin: 0;
+}
+
+.settings-panel,
 .status-panel,
 .project-panel,
 .run-panel,
@@ -41,6 +106,12 @@
 .run-panel h2,
 .agent-panel h2 {
   margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.page-heading-row h2 {
+  margin: 0;
   font-size: 1.15rem;
   font-weight: 600;
 }

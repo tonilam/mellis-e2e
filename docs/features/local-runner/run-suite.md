@@ -19,23 +19,24 @@
 - On a Mac, the developer installs an app and opens it from the Dock, Launchpad, or Finder.
 - On Windows, the developer installs an app and opens it from the Start menu.
 - The runner shows its own window. It does not open a browser.
-- The window shows the project path for as long as the session lasts.
+- The window has a main app menu. Settings is a separate page from the run page.
 - On open, the runner loads the environment of the developer's login shell, including the PATH a new terminal would have. Suite commands and agent CLIs run with that environment.
-- When that environment cannot be loaded, the runner says so in the window and does not start a suite or an agent request.
-- The developer can open a view of the command environment the runner loaded, and can retry the load.
+- When that environment cannot be loaded, Settings says so and the runner does not start a suite or an agent request.
+- The developer can open a view of the command environment the runner loaded, and can retry the load, from Settings.
 
 ## Choose the project and the command
 
-- The developer gives a project path.
-- The developer gives the command that starts the E2E suite, or confirms the command this runner remembered for that path.
-- The runner shows the command before it runs.
-- The developer can change the command before the run.
+- On Settings, the developer gives a project path.
+- On Settings, the developer gives the command that starts the E2E suite, or confirms the command this runner remembered for that path.
+- Settings shows the project path for as long as the session lasts, and shows the command before a run starts.
+- The developer can change the command on Settings before the run.
 - The runner remembers the path and the command on this machine for the next session.
+- The run page does not show Environment, Project path, or Suite command controls.
 
 ## Run
 
-- The developer starts the suite from the window.
-- The runner executes that command in the project path, with the login-shell environment loaded at open.
+- The developer starts the suite from the run page.
+- The runner executes the command and project path from Settings, with the login-shell environment loaded at open.
 - The runner does not start the project's application as part of this action.
 - While the command is running, each test the output reports moves from waiting, to running, to passed or failed.
 - Until a project reporter is mapped, the interim report language is `mellis:test <waiting|running|passed|failed> <name>[ duration=…][ story=…][ failure=…]` lines on stdout/stderr; unmatched lines are ignored and do not invent tests.
