@@ -4,7 +4,7 @@ Development starts here. Run [ticket-start](../../.agents/workflows/ticket-start
 
 A ticket is one of: `new-story`, `update-story`, or `bug`. It links one user story, states pass/fail acceptance criteria, and lists the action items to check off. Sign-off waits until every action item is checked and every criterion is met.
 
-These eight tickets are the first shippable runner, in build order. Each one delivers a story that already exists. No application code starts while a ticket is `draft`.
+These eight tickets are the first shippable runner, in build order. Each one delivers a story that already exists. Later tickets extend the product or fixtures. No application code starts while a ticket is `draft`.
 
 | ID | Type | Story | Status | Title |
 | --- | --- | --- | --- | --- |
@@ -16,3 +16,4 @@ These eight tickets are the first shippable runner, in build order. Each one del
 | [TKT-6](TKT-6-read-the-result.md) | new-story | [US-6](../stories/US-6-read-the-result.md) | signed-off | Read the result |
 | [TKT-7](TKT-7-ask-an-agent.md) | new-story | [US-7](../stories/US-7-ask-an-agent.md) | signed-off | Ask an installed agent |
 | [TKT-8](TKT-8-accept-or-discard.md) | new-story | [US-8](../stories/US-8-accept-or-discard.md) | signed-off | Accept or discard the change |
+| [TKT-9](TKT-9-laravel-login-fixture.md) | new-story | [US-9](../stories/US-9-laravel-login-fixture.md) | signed-off | Laravel login fixture |

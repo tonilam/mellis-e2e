@@ -1,0 +1,16 @@
+.git
+.idea
+.vscode
+.cursor
+node_modules
+vendor
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+.phpunit.result.cache
+.env
+.env.backup
+e2e/test-results
+e2e/playwright-report
+README.md
